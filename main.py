@@ -79,34 +79,26 @@ Make the ideas fresh, relevant to current trends, optimized for {platform}, and 
 # ========== Route: /generate ==========
 @app.route('/generate', methods=['POST'])
 def generate():
-    try:
-        print("🔥 /generate route triggered")
-        data = request.get_json()
-        print("📥 Received data:", data)
+    data = request.get_json()
+    print("📥 Received data:", data)
 
-        platform = data.get("platform", "TikTok")
-        language = data.get("language", "English")
+    platform = data.get("platform")
+    language = data.get("language")
+    topic = data.get("topic")
 
-        prompt = f"Generate 1 engaging idea for {platform} in {language} with:\n" \
-                 f"- Title\n- Description\n- Hashtags"
+    if not topic or not platform or not language:
+        return jsonify({"error": "Missing input fields"}), 400
 
-        print("🧠 Prompt:", prompt)
+    # ✨ Log to confirm
+    print(f"🔍 Generating for {topic} in {language} on {platform}")
 
-        response = model.generate_content(prompt)
-        print("📨 Gemini response:", response.text)
+    idea = generate_ideas(platform, language, topic)
+    print("💡 Gemini Response:", idea)
 
-        idea_text = response.text
-        # Parsing logic...
-        return jsonify({
-            "title": "...",
-            "description": "...",
-            "hashtags": "..."
-        })
-    except Exception as e:
-        print("❌ Error:", str(e))
-        return jsonify({"error": "Error generating ideas. Please try again later."}), 500
+    if not idea:
+        return jsonify({"error": "No ideas returned. Try different input."}), 200
 
-
+    return jsonify(idea)
 
 # ========== Start Flask ==========
 if __name__ == "__main__":
