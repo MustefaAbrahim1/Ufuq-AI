@@ -1,0 +1,2 @@
+# Ufuq-AI
+GenAI

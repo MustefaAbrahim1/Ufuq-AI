@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ufuq AI Content Generator</title>
+  <!-- <link rel="stylesheet" href="../static/style.css" /> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <!-- ========== HEADER ========== -->
+<header class="main-header">
+    <div class="logo" id="logo">
+      <!-- <img src="../static/logo.png" alt="Ufuq AI Content Generator" /> -->
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Ufuq AI GenAI">
+  </div>
+    <nav>
+    <a href="#home">Home</a>
+    <a href="#contact">Contact</a>
+    </nav>
+    <h1 class="brand-title">Ufuq AI Content Generator</h1>
+    <nav>
+      <a href="#about">About Us</a>
+      <a href="#feedback">Feedback/Suggestion</a>
+    </nav>
+</header>
+
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+    <section class="intro-section" id="home">
+      <p><strong>Generate Content Ideas with Your Custom AI:</strong> Unlock creative content ideas for your social media platforms in seconds!</p>
+      <p>Choose your preferences to get started:</p>
+
+      <div class="inline-controls">
+        <label for="lang">Language:</label>
+        <select id="lang">
+          <option value="english">English</option>
+          <option value="arabic">Arabic</option>
+          <option value="hindi">Hindi</option>
+          <option value="french">French</option>
+          <option value="spanish">Spanish</option>
+        </select>
+
+        <label for="platform">Platform:</label>
+        <select id="platform">
+          <option value="tiktok">TikTok</option>
+          <option value="youtube">YouTube</option>
+          <option value="facebook">Facebook</option>
+          <option value="instagram">Instagram</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- ========== CONTENT INPUT FORM ========== -->
+    <section class="content-generator">
+      <h2>Get Personalized Content Ideas</h2>
+      <form id="ideaForm">
+        <label for="niche">Enter your niche:</label>
+        <input type="text" id="niche" placeholder="e.g., fitness, tech, cooking" required />
+
+        <label for="audience">Target audience:</label>
+        <input type="text" id="audience" placeholder="e.g., teens, students, moms" required />
+
+        <label for="topics">Past topics you’ve posted about:</label>
+        <textarea id="topics" rows="4" placeholder="e.g., morning routines, AI tools, healthy snacks"></textarea>
+
+        <button type="submit" id="generateContentBtn">Generate</button>
+      </form>
+    </section>
+
+    <!-- ========== GENERATED RESULTS ========== -->
+    <section id="results" aria-live="polite">
+      <!-- AI-generated content ideas will be inserted here -->
+    </section>
+
+    <!-- ========== FEEDBACK SECTION ========== -->
+    <section class="feedback" id="feedback">
+      <h3>Feedback & Suggestions</h3>
+      <p>We value your input! Let us know how we can improve the AI experience.</p>
+      <form id="feedbackForm">
+        <label for="feedbackText">Your feedback:</label>
+        <textarea id="feedbackText" rows="4" placeholder="Enter your feedback here..."></textarea>
+
+        <label for="email">Your Email (optional):</label>
+        <input type="email" id="email" placeholder="example@email.com" />
+
+        <button type="submit" id="submitFeedbackBtn">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <p>&copy; 2025 Ufuq AI – All rights reserved</p>
+    <div class="socials" id="socials">
+      <a href="#" class="social-btn">Facebook</a>
+      <a href="#" class="social-btn">Instagram</a>
+      <a href="#" class="social-btn">LinkedIn</a>
+      <a href="#" class="social-btn">GitHub</a>
+      <a href="#" class="social-btn">YouTube</a>
+      <a href="#" class="social-btn">TikTok</a>
+    </div>
+  </footer>
+
+  <!-- <script src="../static/script.js"></script> -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
