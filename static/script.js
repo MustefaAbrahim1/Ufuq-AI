@@ -20,7 +20,7 @@ document.getElementById('ideaForm').addEventListener('submit', async function (e
   resultsSection.scrollIntoView({ behavior: 'smooth' });
 
   try {
-    const response = await fetch('http://0.0.0.0:10000/generate', {
+    const response = await fetch('/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
