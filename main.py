@@ -77,7 +77,7 @@ Make the ideas fresh, relevant to current trends, optimized for {platform}, and 
 
 
 # ========== Route: /generate ==========
-@app.route('http://0.0.0.0:10000/generate', methods=['POST'])
+@app.route('/generate', methods=['POST'])
 def generate():
     try:
         print("🔥 /generate route triggered")
