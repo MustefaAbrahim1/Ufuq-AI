@@ -17,9 +17,14 @@ model = genai.GenerativeModel("gemini-2.5-pro")
 # PyTrends (real-time)
 pytrends = TrendReq(hl="en-US", tz=360)
 
-# Flask App
+from flask import Flask, render_template
+
 app = Flask(__name__)
-CORS(app)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 
 # ========== Function: Get Related Trending Keywords ==========
 def get_trending_keywords(niche):
@@ -88,13 +93,6 @@ def generate():
         print("Request Error:", traceback.format_exc())
         return jsonify({"error": "Internal server error."}), 500
 
-from flask import Flask, render_template
-
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 # ========== Start Flask ==========
 if __name__ == "__main__":
