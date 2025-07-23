@@ -77,25 +77,35 @@ Make the ideas fresh, relevant to current trends, optimized for {platform}, and 
 
 
 # ========== Route: /generate ==========
-@app.route("/generate", methods=["POST"])
+@app.route('http://0.0.0.0:10000/generate', methods=['POST'])
 def generate():
     try:
+        print("🔥 /generate route triggered")
         data = request.get_json()
-        niche = data.get("niche", "").strip()
-        audience = data.get("audience", "").strip()
-        past_topics = data.get("topics", "").strip()
-        platform = data.get("platform", "").strip()
-        language = data.get("language", "").strip()
+        print("📥 Received data:", data)
 
-        if not niche or not audience or not platform:
-            return jsonify({"error": "Missing required fields."}), 400
+        platform = data.get("platform", "TikTok")
+        language = data.get("language", "English")
 
-        result = generate_ideas(niche, audience, past_topics, platform, language)
-        return jsonify({"ideas": result})
+        prompt = f"Generate 1 engaging idea for {platform} in {language} with:\n" \
+                 f"- Title\n- Description\n- Hashtags"
 
+        print("🧠 Prompt:", prompt)
+
+        response = model.generate_content(prompt)
+        print("📨 Gemini response:", response.text)
+
+        idea_text = response.text
+        # Parsing logic...
+        return jsonify({
+            "title": "...",
+            "description": "...",
+            "hashtags": "..."
+        })
     except Exception as e:
-        print("Request Error:", traceback.format_exc())
-        return jsonify({"error": "Internal server error."}), 500
+        print("❌ Error:", str(e))
+        return jsonify({"error": "Error generating ideas. Please try again later."}), 500
+
 
 
 # ========== Start Flask ==========
