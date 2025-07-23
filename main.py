@@ -65,11 +65,15 @@ Make the ideas fresh, relevant to current trends, optimized for {platform}, and 
 
 
     try:
-        response = model.generate_content(prompt)
-        return response.text.strip()
-    except Exception as e:
-        print("Gemini Error:", traceback.format_exc())
-        return "⚠️ Failed to generate content. Try again later."
+            response = model.generate_content(prompt)
+            print("--- Gemini Response Start ---")
+            print(response)
+            print(response.text[:500])    # log first 500 chars
+            print("--- Gemini Response End ---")
+            return response.text.strip()
+    except Exception:
+            print("🌐 Gemini generation error:", traceback.format_exc())
+            return "⚠️ Failed to generate content. Try again later."
 
 
 # ========== Route: /generate ==========
