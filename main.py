@@ -88,6 +88,13 @@ def generate():
         print("Request Error:", traceback.format_exc())
         return jsonify({"error": "Internal server error."}), 500
 
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 # ========== Start Flask ==========
 if __name__ == "__main__":
