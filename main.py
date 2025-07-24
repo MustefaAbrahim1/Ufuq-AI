@@ -8,8 +8,7 @@ import traceback
 
 # Load .env API key
 load_dotenv()
-GOOGLE_API_KEY="AIzaSyCDXxgbNtWyZ0BE1SID3STLncdvC1yOCiI"
-# GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 
 # Gemini Config
 genai.configure(api_key=GOOGLE_API_KEY)
