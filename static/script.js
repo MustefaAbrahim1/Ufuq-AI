@@ -20,7 +20,7 @@ document.getElementById('ideaForm').addEventListener('submit', async function (e
   resultsSection.scrollIntoView({ behavior: 'smooth' });
 
   try {
-    const response = await fetch('/generate', {
+    const response = await fetch('http://0.0.0.0:10000/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -56,6 +56,7 @@ document.getElementById('ideaForm').addEventListener('submit', async function (e
   } catch (err) {
     resultsSection.innerHTML = '<p>Error generating ideas. Please try again later.</p>';
     console.error('Error:', err);
+    
   }
 });
 
